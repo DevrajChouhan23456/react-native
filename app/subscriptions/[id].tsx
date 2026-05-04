@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import {  Text } from 'react-native';
 import {Link, useLocalSearchParams} from "expo-router";
 import { SafeAreaView as RNSafeAreaView} from "react-native-safe-area-context";
 import {styled} from "nativewind";
