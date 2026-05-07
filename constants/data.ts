@@ -4,7 +4,7 @@ export const tabs = [
     {name: "index", title: "Home", icon: icons.home},
     {name: "subscriptions", title: "Subscriptions", icon: icons.wallet},
     {name: "insight", title: "Insight", icon: icons.activity},
-    {name: "settings", title: "Setting", icon: icons.setting},
+    {name: "settings", title: "Settings", icon: icons.setting},
 ]
 
 
@@ -14,7 +14,7 @@ export const HOME_USER = {
 
 export const HOME_BALANCE = {
     amount: 2489.48,
-    nextRenewalDate: "2026-03-18T09:00:00.000Z",
+    nextRenewalDate: "2027-01-01T00:00:00.000Z",
 };
 
 export const UPCOMING_SUBSCRIPTIONS: UpcomingSubscription[] = [

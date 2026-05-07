@@ -1,7 +1,7 @@
 import "@/global.css"
 import {FlatList, Image, Text, View} from "react-native";
-import {Link} from "expo-router";
 import {SafeAreaView as RNSafeAreaView} from "react-native-safe-area-context";
+import {useState} from "react";
 import {styled} from "nativewind";
 import images from "@/constants/images";
 import {HOME_BALANCE, HOME_SUBSCRIPTIONS, HOME_USER, UPCOMING_SUBSCRIPTIONS} from "@/constants/data";
@@ -41,7 +41,7 @@ export default function App() {
                     </View>
 
                     <View>
-                        <ListHeading title="Upcoming"/>
+                        <ListHeading title="Upcoming" onViewAllPress={() => {}}/>
                         <FlatList data={UPCOMING_SUBSCRIPTIONS}
                                   renderItem={({item}) => (<UpComingSubscriptionCard {...item}/>)}
                                   keyExtractor={(item) => item.id}
@@ -53,7 +53,7 @@ export default function App() {
                         />
                     </View>
 
-                    <ListHeading title="All Subscriptions"/>
+                    <ListHeading title="All Subscriptions" onViewAllPress={() => {}}/>
                 </>
                 }
                 data={HOME_SUBSCRIPTIONS}

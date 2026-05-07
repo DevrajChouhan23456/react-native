@@ -17,7 +17,7 @@ const SubscriptionCard = ({
                     <View className={"sub-copy"}>
                         <Text className={"sub-title"} numberOfLines={1}>{name}</Text>
                         <Text>
-                            {category?.trim() || plan?.trim() || renewalDate ? formatCurrency(price, currency) : ""}
+                            {category?.trim() || plan?.trim() || (renewalDate ? formatSubscriptionDateTime(renewalDate) : "")}
                         </Text>
                     </View>
                 </View>
@@ -52,7 +52,7 @@ const SubscriptionCard = ({
                         </View>
                         <View className={"sub-row"}>
                             <View className={"sub-row-copy"}>
-                                <Text className={"sub-label"}>Renewable Date :</Text>
+                                <Text className={"sub-label"}>Renewal Date :</Text>
                                 <Text className={"sub-value"} numberOfLines={1}
                                       ellipsizeMode="tail">{renewalDate ? formatSubscriptionDateTime(renewalDate) : ""} </Text>
                             </View>
