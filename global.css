@@ -246,7 +246,7 @@
     }
 
     .auth-content {
-        @apply grow px-5 pb-10 pt-8;
+        @apply grow px-5 pb-10 pt-10;
     }
 
     .auth-brand-block {
@@ -254,39 +254,47 @@
     }
 
     .auth-logo-wrap {
-        @apply mb-7 flex-row items-center gap-3;
+        @apply mb-8 flex-row items-center gap-3;
     }
 
     .auth-logo-mark {
-        @apply relative size-14 items-center justify-center rounded-2xl bg-accent;
+        @apply relative size-16 items-center justify-center rounded-bl-3xl rounded-tr-3xl bg-accent;
     }
 
     .auth-logo-mark-text {
-        @apply text-2xl font-sans-extrabold text-background;
+        @apply text-3xl font-sans-extrabold text-background;
     }
 
     .auth-wordmark {
-        @apply text-3xl font-sans-extrabold text-primary;
+        @apply text-4xl font-sans-extrabold text-primary;
     }
 
     .auth-wordmark-sub {
-        @apply -mt-1 text-xs font-sans-semibold uppercase tracking-[1px] text-muted-foreground;
+        @apply -mt-1 text-sm font-sans-semibold text-muted-foreground;
     }
 
     .auth-title {
-        @apply text-3xl font-sans-bold text-primary;
+        @apply text-center text-4xl font-sans-extrabold text-primary;
     }
 
     .auth-subtitle {
-        @apply mt-2 max-w-[320px] text-center text-base font-sans-medium text-muted-foreground;
+        @apply mt-3 max-w-[340px] text-center text-base font-sans-medium leading-6 text-muted-foreground;
+    }
+
+    .auth-assurance {
+        @apply mt-4 max-w-[320px] text-center text-xs font-sans-semibold text-primary/55;
     }
 
     .auth-card {
-        @apply mt-8 rounded-3xl border border-border bg-card p-5;
+        @apply mt-8 rounded-3xl border border-border bg-card p-6;
+    }
+
+    .auth-card-keyboard {
+        @apply mt-2;
     }
 
     .auth-form {
-        @apply gap-4;
+        @apply gap-5;
     }
 
     .auth-field {
@@ -294,11 +302,11 @@
     }
 
     .auth-label {
-        @apply text-sm font-sans-semibold text-primary;
+        @apply text-sm font-sans-bold text-primary;
     }
 
     .auth-input {
-        @apply rounded-2xl border border-border bg-background px-4 py-4 text-base font-sans-medium text-primary;
+        @apply min-h-14 rounded-2xl border border-border bg-background px-4 py-4 text-base font-sans-semibold text-primary;
     }
 
     .auth-input-error {
@@ -306,15 +314,27 @@
     }
 
     .auth-error {
-        @apply text-xs font-sans-medium text-destructive;
+        @apply text-xs font-sans-semibold text-destructive;
     }
 
     .auth-helper {
-        @apply text-sm font-sans-medium text-muted-foreground;
+        @apply text-sm font-sans-semibold leading-5 text-muted-foreground;
+    }
+
+    .auth-code-input {
+        @apply text-center text-xl font-sans-semibold;
+    }
+
+    .auth-verification-header {
+        @apply gap-2 rounded-2xl border border-border bg-muted p-4;
+    }
+
+    .auth-verification-title {
+        @apply text-lg font-sans-extrabold text-primary;
     }
 
     .auth-button {
-        @apply mt-1 items-center rounded-2xl bg-accent py-4;
+        @apply mt-1 min-h-14 items-center justify-center rounded-2xl bg-accent py-4;
     }
 
     .auth-button-disabled {
@@ -322,7 +342,7 @@
     }
 
     .auth-button-text {
-        @apply text-base font-sans-bold text-primary;
+        @apply text-base font-sans-extrabold text-primary;
     }
 
     .auth-secondary-button {
@@ -342,7 +362,7 @@
     }
 
     .auth-divider-text {
-        @apply text-[11px] font-sans-semibold uppercase tracking-[1px] text-muted-foreground;
+        @apply text-[11px] font-sans-semibold uppercase text-muted-foreground;
     }
 
     .auth-link-row {
@@ -350,11 +370,15 @@
     }
 
     .auth-link-copy {
-        @apply text-sm font-sans-medium text-muted-foreground;
+        @apply text-sm font-sans-semibold text-muted-foreground;
     }
 
     .auth-link {
-        @apply text-sm font-sans-bold text-accent;
+        @apply text-sm font-sans-extrabold text-accent;
+    }
+
+    .auth-link-disabled {
+        @apply text-sm font-sans-extrabold text-muted-foreground;
     }
 
     .modal-overlay {
