@@ -260,7 +260,7 @@ export default function SignInScreen() {
 
                             <View className="auth-link-row">
                                 <Text className="auth-link-copy">Starting fresh?</Text>
-                                <Link href="/(auth)/sign-up" asChild>
+                                <Link href="/(auth)/sign-up">
                                     <Text className="auth-link">Create your workspace</Text>
                                 </Link>
                             </View>

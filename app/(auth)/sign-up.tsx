@@ -559,7 +559,7 @@ export default function SignUpScreen() {
 
                             <View className="auth-link-row">
                                 <Text className="auth-link-copy">Already managing plans?</Text>
-                                <Link href="/(auth)/sign-in" asChild>
+                                <Link href="/(auth)/sign-in">
                                     <Text className="auth-link">Sign in</Text>
                                 </Link>
                             </View>
