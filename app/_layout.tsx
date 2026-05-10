@@ -3,6 +3,7 @@ import { ClerkProvider, useAuth } from "@clerk/clerk-expo";
 import { tokenCache } from "@/lib/clerk";
 import { SplashScreen, Stack, useRouter, useSegments } from "expo-router";
 import { useFonts } from "expo-font";
+import { PostHogProvider, usePostHog } from "posthog-react-native";
 import { useEffect } from "react";
 import { View } from "react-native";
 
@@ -26,9 +27,26 @@ export default function RootLayout() {
         throw new Error("Missing EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY");
     }
 
+    const posthogApiKey = process.env.EXPO_PUBLIC_POSTHOG_KEY;
+    const posthogHost = process.env.EXPO_PUBLIC_POSTHOG_HOST ?? "https://us.i.posthog.com";
+
+    const appTree = <AuthGate />;
+
+    const appWithPosthog = posthogApiKey ? (
+        <PostHogProvider
+            apiKey={posthogApiKey}
+            options={{ host: posthogHost }}
+            autocapture={{ captureAppLifecycleEvents: true, captureScreens: true, captureTouches: false }}
+        >
+            {appTree}
+        </PostHogProvider>
+    ) : (
+        appTree
+    );
+
     return (
         <ClerkProvider publishableKey={publishableKey} tokenCache={tokenCache}>
-            <AuthGate />
+            {appWithPosthog}
         </ClerkProvider>
     );
 }
@@ -37,6 +55,7 @@ function AuthGate() {
     const { isLoaded, isSignedIn } = useAuth();
     const segments = useSegments();
     const router = useRouter();
+    const posthog = usePostHog();
 
     useEffect(() => {
         if (!isLoaded) {
@@ -60,6 +79,23 @@ function AuthGate() {
             SplashScreen.hideAsync();
         }
     }, [isLoaded]);
+
+    useEffect(() => {
+        if (!isLoaded) {
+            return;
+        }
+
+        posthog?.capture("app_opened", { platform: "expo" });
+    }, [isLoaded, posthog]);
+
+    useEffect(() => {
+        if (!isLoaded) {
+            return;
+        }
+
+        const screenName = segments.join("/") || "root";
+        posthog?.screen(screenName);
+    }, [isLoaded, posthog, segments]);
 
     if (!isLoaded) {
         return <View className="flex-1 bg-background" />;

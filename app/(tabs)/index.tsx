@@ -3,6 +3,7 @@ import {FlatList, Image, Text, View} from "react-native";
 import {Link} from "expo-router";
 import {SafeAreaView as RNSafeAreaView} from "react-native-safe-area-context";
 import {styled} from "nativewind";
+import {useState} from "react";
 import images from "@/constants/images";
 import {HOME_BALANCE, HOME_SUBSCRIPTIONS, HOME_USER, UPCOMING_SUBSCRIPTIONS} from "@/constants/data";
 import {icons} from "@/constants/icons";
@@ -16,7 +17,6 @@ import SubscriptionCard from "@/components/SubscriptionCard";
 const SafeAreaView = styled(RNSafeAreaView);
 
 export default function App() {
-    // @ts-ignore
     const [expandedSubscriptionId, setExpandedSubscriptionId] = useState<string | null>(null);
     return (
         <SafeAreaView className="flex-1 bg-background p-5">
@@ -60,7 +60,7 @@ export default function App() {
                 keyExtractor={(item) => item.id}
                 renderItem={({item}) =>
                     (<SubscriptionCard {...item} expanded={expandedSubscriptionId === item.id}
-                                       onPress={() => setExpandedSubscriptionId((currentId: string) =>
+                                       onPress={() => setExpandedSubscriptionId((currentId: string | null) =>
                                            (item.id === currentId ? null : item.id))}
                     />)}
                 showsVerticalScrollIndicator={false}
