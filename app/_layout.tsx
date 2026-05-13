@@ -6,6 +6,7 @@ import { useFonts } from "expo-font";
 import { PostHogProvider, usePostHog } from "posthog-react-native";
 import { useEffect } from "react";
 import { View } from "react-native";
+import { SubscriptionStoreProvider } from "@/lib/subscription-store";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -46,7 +47,7 @@ export default function RootLayout() {
 
     return (
         <ClerkProvider publishableKey={publishableKey} tokenCache={tokenCache}>
-            {appWithPosthog}
+            <SubscriptionStoreProvider>{appWithPosthog}</SubscriptionStoreProvider>
         </ClerkProvider>
     );
 }

@@ -8,8 +8,8 @@ import {components, spacing} from "@/constants/theme";
 import {useSubscriptions} from "@/contexts/SubscriptionsContext";
 
 const SafeAreaView = styled(RNSafeAreaView);
-const StyledTextInput = styled(TextInput);
 const tabBar = components.tabBar;
+const DEFAULT_EXPANDED_SUBSCRIPTION_ID = "github-copilot";
 
 const SubscriptionsScreen = () => {
   const insets = useSafeAreaInsets();
@@ -17,106 +17,67 @@ const SubscriptionsScreen = () => {
   const [expandedSubscriptionId, setExpandedSubscriptionId] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const normalizedQuery = searchQuery.trim().toLowerCase();
-  const bottomInset = Math.max(insets.bottom, tabBar.horizontalInset);
-  const listBottomPadding = tabBar.height + bottomInset + spacing[6];
+    const visibleSubscriptions = useMemo(
+        () => subscriptions.filter(isSubscriptionActive),
+        [subscriptions]
+    );
+    const listBottomPadding =
+        tabBar.height + Math.max(insets.bottom, tabBar.horizontalInset) + spacing[6];
 
   const filteredSubscriptions = subscriptions.filter((subscription) => {
     if (!normalizedQuery) {
       return true;
     }
 
-    const searchContent = [
-      subscription.name,
-      subscription.plan,
-      subscription.category,
-      subscription.paymentMethod,
-      subscription.status,
-      subscription.billing,
-    ]
-        .filter(Boolean)
-        .join(" ")
-        .toLowerCase();
-
-    return searchContent.includes(normalizedQuery);
-  });
-
-  return (
-    <SafeAreaView className={"flex-1 bg-background"}>
-      <KeyboardAvoidingView
-          className="flex-1"
-          behavior={Platform.OS === "ios" ? "padding" : "height"}
-          keyboardVerticalOffset={Platform.OS === "ios" ? spacing[6] : 0}
-      >
-        <FlatList
-            data={filteredSubscriptions}
-            keyExtractor={(item) => item.id}
-            renderItem={({item}) => (
-                <SubscriptionCard
-                    {...item}
-                    expanded={expandedSubscriptionId === item.id}
-                    onPress={() =>
+    const handleCancelSubscription = (subscription: Subscription) => {
+        Alert.alert(
+            "Cancel subscription",
+            `Do you want to cancel ${subscription.name}?`,
+            [
+                { text: "Keep", style: "cancel" },
+                {
+                    text: "Cancel subscription",
+                    style: "destructive",
+                    onPress: () => {
+                        cancelSubscription(subscription.id);
                         setExpandedSubscriptionId((currentId) =>
-                            item.id === currentId ? null : item.id
-                        )
-                    }
-                />
-            )}
-            automaticallyAdjustKeyboardInsets
-            keyboardDismissMode="on-drag"
-            keyboardShouldPersistTaps="handled"
-            showsVerticalScrollIndicator={false}
-            ItemSeparatorComponent={() => <View className="h-4"/>}
-            extraData={expandedSubscriptionId}
-            ListHeaderComponent={
-              <View className="subscriptions-hero">
-                <Text className="subscriptions-title">All subscriptions</Text>
+                            currentId === subscription.id ? null : currentId
+                        );
+                    },
+                },
+            ]
+        );
+    };
 
-                <View className="subscriptions-search-row">
-                  <StyledTextInput
-                      value={searchQuery}
-                      onChangeText={setSearchQuery}
-                      placeholder="Search name, plan, category, or payment"
-                      placeholderTextColor="rgba(0, 0, 0, 0.45)"
-                      className="subscriptions-search-input"
-                      autoCapitalize="none"
-                      autoCorrect={false}
-                      returnKeyType="search"
-                      clearButtonMode="while-editing"
-                  />
-
-                  {normalizedQuery ? (
-                      <TouchableOpacity
-                          className="subscriptions-search-clear"
-                          onPress={() => {
-                            setSearchQuery("");
-                            setExpandedSubscriptionId(null);
-                          }}
-                      >
-                        <Text className="subscriptions-search-clear-text">Clear</Text>
-                      </TouchableOpacity>
-                  ) : null}
-                </View>
-              </View>
-            }
-            ListEmptyComponent={
-              <View className="subscriptions-empty-state">
-                <Text className="subscriptions-empty-title">No subscriptions found</Text>
-                <Text className="subscriptions-empty-copy">
-                  Try searching by category, plan, billing cycle, or provider name.
-                </Text>
-              </View>
-            }
-            contentContainerStyle={{
-              paddingTop: spacing[5],
-              paddingHorizontal: spacing[5],
-              paddingBottom: listBottomPadding,
-            }}
-            scrollIndicatorInsets={{bottom: listBottomPadding}}
-        />
-      </KeyboardAvoidingView>
-    </SafeAreaView>
-  );
-};
-
-export default SubscriptionsScreen;
+    return (
+        <SafeAreaView className="subscriptions-showcase-screen">
+            <FlatList
+                data={visibleSubscriptions}
+                keyExtractor={(item) => item.id}
+                renderItem={({ item }) => (
+                    <SubscriptionShowcaseCard
+                        subscription={item}
+                        expanded={expandedSubscriptionId === item.id}
+                        onPress={() =>
+                            setExpandedSubscriptionId((currentId) =>
+                                currentId === item.id ? null : item.id
+                            )
+                        }
+                        onManagePress={() => showComingSoonMessage("Manage", item.name)}
+                        onChangePress={() => showComingSoonMessage("Change", item.name)}
+                        onCancelPress={() => handleCancelSubscription(item)}
+                    />
+                )}
+                ItemSeparatorComponent={() => <View className="h-5" />}
+                contentContainerStyle={{
+                    paddingHorizontal: spacing[5],
+                    paddingTop: spacing[2],
+                    paddingBottom: listBottomPadding,
+                }}
+                ListHeaderComponent={<DarkScreenHeader title="My Subscriptions" />}
+                ListHeaderComponentStyle={{ marginBottom: spacing[8] }}
+                showsVerticalScrollIndicator={false}
+            />
+        </SafeAreaView>
+    );
+}

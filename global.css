@@ -504,4 +504,295 @@
     .category-chip-text-active {
         @apply font-sans-extrabold text-accent;
     }
+
+    .dark-screen-header {
+        @apply relative mb-8 min-h-12 flex-row items-center justify-between;
+    }
+
+    .dark-screen-header-title {
+        @apply absolute left-0 right-0 text-center text-[18px] font-sans-extrabold;
+        color: #0d1a46;
+    }
+
+    .dark-screen-header-button {
+        @apply size-12 items-center justify-center rounded-full border;
+        border-color: #efe3ae;
+        background-color: rgba(255, 255, 255, 0.01);
+    }
+
+    .dark-screen-header-icon {
+        @apply size-5;
+    }
+
+    .insight-screen {
+        @apply flex-1;
+        background-color: #04070f;
+    }
+
+    .insight-section-row {
+        @apply mb-5 mt-1 flex-row items-center justify-between;
+    }
+
+    .insight-section-title {
+        @apply text-4xl font-sans-extrabold;
+        color: #0d1a46;
+    }
+
+    .insight-section-action {
+        @apply rounded-full border px-5 py-2.5;
+        border-color: #efe3ae;
+    }
+
+    .insight-section-action-text {
+        @apply text-xl font-sans-bold;
+        color: #0d1a46;
+    }
+
+    .insight-chart-card {
+        @apply rounded-[24px] px-4 py-6;
+        background-color: #f7ebc2;
+    }
+
+    .insight-chart-inner {
+        @apply flex-row gap-2;
+    }
+
+    .insight-chart-axis {
+        @apply justify-between pb-10 pt-3;
+        height: 220px;
+    }
+
+    .insight-chart-axis-label {
+        @apply text-base font-sans-medium;
+        color: #536482;
+    }
+
+    .insight-chart-plot {
+        @apply relative flex-1 justify-end;
+        height: 220px;
+    }
+
+    .insight-chart-grid {
+        @apply absolute inset-x-0 bottom-10 top-3 justify-between;
+    }
+
+    .insight-chart-grid-line {
+        border-top-width: 1px;
+        border-top-color: #dfd29f;
+        border-top-style: dashed;
+    }
+
+    .insight-chart-bars {
+        @apply flex-row items-end justify-between pb-1;
+        height: 100%;
+    }
+
+    .insight-chart-bar-group {
+        @apply flex-1 items-center;
+    }
+
+    .insight-chart-bar-wrap {
+        @apply min-h-[188px] items-center justify-end;
+    }
+
+    .insight-chart-bubble {
+        @apply mb-3 rounded-2xl px-3 py-2;
+        background-color: #fff8e7;
+    }
+
+    .insight-chart-bubble-text {
+        @apply text-lg font-sans-extrabold;
+        color: #f08a55;
+    }
+
+    .insight-chart-bar {
+        @apply w-3 rounded-full;
+        background-color: #081126;
+    }
+
+    .insight-chart-bar-highlighted {
+        background-color: #f08a55;
+    }
+
+    .insight-chart-day {
+        @apply mt-4 text-lg font-sans-semibold;
+        color: #0d1a46;
+    }
+
+    .insight-expense-card {
+        @apply mt-4 flex-row items-end justify-between rounded-[24px] border px-4 py-4;
+        border-color: #efe3ae;
+        background-color: rgba(255, 255, 255, 0.01);
+    }
+
+    .insight-expense-title {
+        @apply text-[17px] font-sans-extrabold;
+        color: #0d1a46;
+    }
+
+    .insight-expense-month {
+        @apply mt-1 text-base font-sans-bold;
+        color: #516383;
+    }
+
+    .insight-expense-value {
+        @apply text-[18px] font-sans-extrabold;
+        color: #0d1a46;
+    }
+
+    .insight-expense-change {
+        @apply mt-1 text-base font-sans-extrabold;
+        color: #6d9dff;
+    }
+
+    .insight-history-row {
+        @apply mt-8;
+    }
+
+    .insight-history-list {
+        @apply gap-4;
+    }
+
+    .insight-history-card {
+        @apply flex-row items-center rounded-[30px] px-5 py-5;
+    }
+
+    .insight-history-copy {
+        @apply ml-4 min-w-0 flex-1 gap-1;
+    }
+
+    .insight-history-name {
+        @apply text-[18px] font-sans-extrabold;
+        color: #081126;
+    }
+
+    .insight-history-date {
+        @apply text-base font-sans-medium;
+        color: #42567f;
+    }
+
+    .insight-history-price-box {
+        @apply ml-4 items-end;
+    }
+
+    .insight-history-price {
+        @apply text-[18px] font-sans-extrabold;
+        color: #081126;
+    }
+
+    .insight-history-billing {
+        @apply mt-1 text-base font-sans-medium;
+        color: #42567f;
+    }
+
+    .subscription-brand-badge {
+        @apply size-14 items-center justify-center rounded-2xl;
+    }
+
+    .subscription-brand-badge-cream {
+        background-color: #fff2c9;
+    }
+
+    .subscription-brand-badge-soft {
+        background-color: rgba(255, 255, 255, 0.28);
+    }
+
+    .subscription-brand-image {
+        @apply size-9;
+    }
+
+    .subscription-brand-monogram {
+        @apply size-10 items-center justify-center rounded-full bg-primary;
+    }
+
+    .subscription-brand-monogram-text {
+        @apply text-xl font-sans-extrabold text-background;
+    }
+
+    .subscriptions-showcase-screen {
+        @apply flex-1;
+        background-color: #04070f;
+    }
+
+    .subscription-showcase-card {
+        @apply rounded-[24px] border px-4 py-5;
+        border-color: #efe3ae;
+        background-color: rgba(255, 255, 255, 0.01);
+    }
+
+    .subscription-showcase-card-expanded {
+        @apply rounded-[32px] px-5 py-5;
+    }
+
+    .subscription-showcase-head {
+        @apply flex-row items-center;
+    }
+
+    .subscription-showcase-copy {
+        @apply ml-4 min-w-0 flex-1 gap-1;
+    }
+
+    .subscription-showcase-title {
+        @apply text-[19px] font-sans-extrabold;
+        color: #0d1a46;
+    }
+
+    .subscription-showcase-subtitle {
+        @apply text-base font-sans-semibold;
+        color: #42567f;
+    }
+
+    .subscription-showcase-price-box {
+        @apply ml-3 items-end;
+    }
+
+    .subscription-showcase-price {
+        @apply text-[18px] font-sans-extrabold;
+        color: #0d1a46;
+    }
+
+    .subscription-showcase-term {
+        @apply mt-1 text-base font-sans-medium;
+        color: #42567f;
+    }
+
+    .subscription-showcase-body {
+        @apply mt-6 gap-6;
+    }
+
+    .subscription-showcase-row {
+        @apply flex-row items-center justify-between gap-4;
+    }
+
+    .subscription-showcase-row-side {
+        @apply flex-row items-center gap-3;
+    }
+
+    .subscription-showcase-label {
+        @apply text-[13px] font-sans-bold;
+        color: #42567f;
+    }
+
+    .subscription-showcase-value {
+        @apply text-[16px] font-sans-extrabold;
+        color: #081126;
+    }
+
+    .subscription-showcase-small-button {
+        @apply rounded-full border px-4 py-2;
+        border-color: #081126;
+    }
+
+    .subscription-showcase-small-button-text {
+        @apply text-[15px] font-sans-extrabold;
+        color: #081126;
+    }
+
+    .subscription-showcase-cancel {
+        @apply mt-1 items-center rounded-full bg-primary py-4;
+    }
+
+    .subscription-showcase-cancel-text {
+        @apply text-base font-sans-extrabold text-background;
+    }
 }
