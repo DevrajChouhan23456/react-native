@@ -1,14 +1,16 @@
 import React from 'react';
 import {View, Text, Image, Pressable} from 'react-native';
 import {formatCurrency, formatStatusLabel, formatSubscriptionDateTime} from "@/lib/utils";
-import clsx from "clsx";
+import {clsx} from "clsx";
 
 const SubscriptionCard = ({
                               name, price, billing, currency, icon, color, category, plan, renewalDate,
                               onPress, expanded, paymentMethod, startDate , status
                           }: SubscriptionCardProps) => {
+    const summary = category?.trim() || plan?.trim() || (renewalDate ? `Renews ${formatSubscriptionDateTime(renewalDate)}` : "");
+
     return (
-        <Pressable onPress={onPress} className={clsx("sub-card", expanded ? "bg-card-expanded" : "bg-card")}
+        <Pressable onPress={onPress} className={clsx("sub-card", expanded ? "sub-card-expanded" : "bg-card")}
                    style={!expanded && color ? {backgroundColor: color} : undefined}>
             <View className={"sub-head"}>
 
@@ -16,9 +18,7 @@ const SubscriptionCard = ({
                     <Image source={icon} className={"sub-icon"}/>
                     <View className={"sub-copy"}>
                         <Text className={"sub-title"} numberOfLines={1}>{name}</Text>
-                        <Text>
-                            {category?.trim() || plan?.trim() || renewalDate ? formatCurrency(price, currency) : ""}
-                        </Text>
+                        {summary ? <Text className={"sub-meta"} numberOfLines={1}>{summary}</Text> : null}
                     </View>
                 </View>
                 <View className={"sub-price-box"}>
@@ -27,7 +27,7 @@ const SubscriptionCard = ({
                 </View>
             </View>
             {expanded && (
-                <View className={"sub-bdy"}>
+                <View className={"sub-body"}>
                     <View className={"sub-details"}>
                         <View className={"sub-row"}>
                             <View className={"sub-row-copy"}>

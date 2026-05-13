@@ -36,7 +36,7 @@ export default function RootLayout() {
         <PostHogProvider
             apiKey={posthogApiKey}
             options={{ host: posthogHost }}
-            autocapture={{ captureAppLifecycleEvents: true, captureScreens: true, captureTouches: false }}
+            autocapture={{ captureScreens: false, captureTouches: false }}
         >
             {appTree}
         </PostHogProvider>
