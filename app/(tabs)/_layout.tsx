@@ -1,11 +1,10 @@
 import {Tabs} from "expo-router"
 import {tabs} from "@/constants/data";
-import {View} from "react-native";
-import {Icon} from "expo-router/build/native-tabs";
-import clsx from "clsx";
-import {Image} from "react-native";
+import {Image, View} from "react-native";
+import {clsx} from "clsx";
 import {useSafeAreaInsets} from "react-native-safe-area-context";
 import {colors, components} from "@/constants/theme";
+import {SubscriptionsProvider} from "@/contexts/SubscriptionsContext";
 
 const tabBar = components.tabBar;
 const TabLayout = () => {
@@ -20,7 +19,8 @@ const TabLayout = () => {
         )
     }
 
-    return (<Tabs screenOptions={{
+    return (<SubscriptionsProvider>
+        <Tabs screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: {
@@ -49,7 +49,8 @@ const TabLayout = () => {
                                  <TabIcon focused={focused} icon={tab.icon}/>
                              )
                          }}/>)}
-    </Tabs>)
+    </Tabs>
+    </SubscriptionsProvider>)
 }
 
 export default TabLayout;

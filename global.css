@@ -233,6 +233,50 @@
         @apply py-4 text-sm font-sans-medium text-black/60;
     }
 
+    .subscriptions-hero {
+        @apply gap-3 pb-6;
+    }
+
+    .subscriptions-kicker {
+        @apply text-sm font-sans-bold uppercase tracking-[1.2px] text-accent;
+    }
+
+    .subscriptions-title {
+        @apply text-4xl font-sans-extrabold text-primary;
+    }
+
+    .subscriptions-summary {
+        @apply max-w-[320px] text-base font-sans-medium leading-6 text-muted-foreground;
+    }
+
+    .subscriptions-search-row {
+        @apply mt-1 flex-row items-center gap-3;
+    }
+
+    .subscriptions-search-input {
+        @apply min-h-14 flex-1 rounded-2xl border border-border bg-card px-4 py-4 text-base font-sans-semibold text-primary;
+    }
+
+    .subscriptions-search-clear {
+        @apply rounded-full border border-border bg-background px-4 py-3;
+    }
+
+    .subscriptions-search-clear-text {
+        @apply text-sm font-sans-bold text-primary;
+    }
+
+    .subscriptions-empty-state {
+        @apply mt-8 rounded-3xl border border-dashed border-border bg-card px-5 py-8;
+    }
+
+    .subscriptions-empty-title {
+        @apply text-xl font-sans-bold text-primary;
+    }
+
+    .subscriptions-empty-copy {
+        @apply mt-2 text-sm font-sans-medium leading-6 text-muted-foreground;
+    }
+
     .auth-safe-area {
         @apply flex-1 bg-background;
     }
@@ -386,7 +430,7 @@
     }
 
     .modal-container {
-        @apply mt-auto max-h-[85%] rounded-t-3xl bg-background;
+        @apply mt-auto max-h-[85%] overflow-hidden rounded-t-3xl bg-background;
     }
 
     .modal-header {
@@ -394,19 +438,31 @@
     }
 
     .modal-title {
-        @apply text-xl font-sans-bold text-primary;
+        @apply text-2xl font-sans-extrabold text-primary;
     }
 
     .modal-close {
-        @apply size-8 items-center justify-center rounded-full bg-muted;
+        @apply size-9 items-center justify-center rounded-full bg-muted;
     }
 
     .modal-close-text {
-        @apply text-lg font-sans-bold text-primary;
+        @apply text-lg font-sans-extrabold text-primary;
     }
 
     .modal-body {
         @apply gap-5 p-5;
+    }
+
+    .modal-label {
+        @apply text-sm font-sans-extrabold text-primary;
+    }
+
+    .modal-footer {
+        @apply border-t border-border bg-background px-5 pt-4;
+    }
+
+    .modal-button-text {
+        @apply text-base font-sans-extrabold;
     }
 
     .picker-row {
@@ -422,11 +478,11 @@
     }
 
     .picker-option-text {
-        @apply text-sm font-sans-semibold text-muted-foreground;
+        @apply text-sm font-sans-bold text-muted-foreground;
     }
 
     .picker-option-text-active {
-        @apply text-accent;
+        @apply font-sans-extrabold text-accent;
     }
 
     .category-scroll {
@@ -438,14 +494,14 @@
     }
 
     .category-chip-active {
-        @apply border-accent bg-accent/10;
+        @apply border-accent bg-accent/15;
     }
 
     .category-chip-text {
-        @apply text-sm font-sans-semibold text-muted-foreground;
+        @apply text-sm font-sans-bold text-muted-foreground;
     }
 
     .category-chip-text-active {
-        @apply text-accent;
+        @apply font-sans-extrabold text-accent;
     }
 }

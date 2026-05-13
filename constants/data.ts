@@ -1,5 +1,33 @@
 import {icons} from "./icons"
 
+export const SUBSCRIPTION_FREQUENCIES = ["Monthly", "Yearly"] as const;
+
+export type SubscriptionFrequencyOption = (typeof SUBSCRIPTION_FREQUENCIES)[number];
+
+export const SUBSCRIPTION_CATEGORIES = [
+    "Entertainment",
+    "AI Tools",
+    "Developer Tools",
+    "Design",
+    "Productivity",
+    "Cloud",
+    "Music",
+    "Other",
+] as const;
+
+export type SubscriptionCategoryOption = (typeof SUBSCRIPTION_CATEGORIES)[number];
+
+export const SUBSCRIPTION_CATEGORY_COLORS: Record<SubscriptionCategoryOption, string> = {
+    "Entertainment": "#f7d6bf",
+    "AI Tools": "#d8e9f2",
+    "Developer Tools": "#e8def8",
+    "Design": "#f5dfb1",
+    "Productivity": "#d7ecd7",
+    "Cloud": "#d1e7ef",
+    "Music": "#e3d8f6",
+    "Other": "#efe6cf",
+};
+
 export const tabs = [
     {name: "index", title: "Home", icon: icons.home},
     {name: "subscriptions", title: "Subscriptions", icon: icons.wallet},
