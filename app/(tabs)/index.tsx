@@ -4,7 +4,7 @@ import {SafeAreaView as RNSafeAreaView} from "react-native-safe-area-context";
 import {styled} from "nativewind";
 import {useState} from "react";
 import images from "@/constants/images";
-import {HOME_BALANCE, HOME_SUBSCRIPTIONS, HOME_USER, UPCOMING_SUBSCRIPTIONS} from "@/constants/data";
+import {HOME_BALANCE, HOME_USER, UPCOMING_SUBSCRIPTIONS} from "@/constants/data";
 import {icons} from "@/constants/icons";
 import {formatCurrency} from "@/lib/utils";
 import dayjs from "dayjs";
@@ -12,13 +12,14 @@ import ListHeading from "@/components/ListHeading";
 import UpComingSubscriptionCard from "@/components/UpComingSubscriptionCard";
 import SubscriptionCard from "@/components/SubscriptionCard";
 import CreateSubscriptionModal from "@/components/CreateSubscriptionModal";
+import {useSubscriptions} from "@/contexts/SubscriptionsContext";
 
 
 const SafeAreaView = styled(RNSafeAreaView);
 
 export default function App() {
     const [expandedSubscriptionId, setExpandedSubscriptionId] = useState<string | null>(null);
-    const [subscriptions, setSubscriptions] = useState<Subscription[]>(HOME_SUBSCRIPTIONS);
+    const {subscriptions, addSubscription} = useSubscriptions();
     const [isCreateSubscriptionModalVisible, setIsCreateSubscriptionModalVisible] = useState(false);
 
     const openCreateSubscriptionModal = () => {
@@ -30,7 +31,7 @@ export default function App() {
     };
 
     const handleCreateSubscription = (subscription: Subscription) => {
-        setSubscriptions((currentSubscriptions) => [subscription, ...currentSubscriptions]);
+        addSubscription(subscription);
         setExpandedSubscriptionId(null);
     };
 

@@ -3,9 +3,9 @@ import React, {useState} from 'react';
 import {FlatList, KeyboardAvoidingView, Platform, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {SafeAreaView as RNSafeAreaView, useSafeAreaInsets} from "react-native-safe-area-context";
 import {styled} from "nativewind";
-import {HOME_SUBSCRIPTIONS} from "@/constants/data";
 import SubscriptionCard from "@/components/SubscriptionCard";
 import {components, spacing} from "@/constants/theme";
+import {useSubscriptions} from "@/contexts/SubscriptionsContext";
 
 const SafeAreaView = styled(RNSafeAreaView);
 const StyledTextInput = styled(TextInput);
@@ -13,6 +13,7 @@ const tabBar = components.tabBar;
 
 const SubscriptionsScreen = () => {
   const insets = useSafeAreaInsets();
+  const {subscriptions} = useSubscriptions();
   const [expandedSubscriptionId, setExpandedSubscriptionId] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -20,7 +21,7 @@ const SubscriptionsScreen = () => {
   const bottomInset = Math.max(insets.bottom, tabBar.horizontalInset);
   const listBottomPadding = tabBar.height + bottomInset + spacing[6];
 
-  const filteredSubscriptions = HOME_SUBSCRIPTIONS.filter((subscription) => {
+  const filteredSubscriptions = subscriptions.filter((subscription) => {
     if (!normalizedQuery) {
       return true;
     }

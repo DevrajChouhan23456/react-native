@@ -34,7 +34,27 @@ interface CreateSubscriptionModalProps {
 const DEFAULT_FREQUENCY = SUBSCRIPTION_FREQUENCIES[0];
 const DEFAULT_CATEGORY = SUBSCRIPTION_CATEGORIES[0];
 
-const parsePrice = (value: string) => Number(value.replace(/,/g, ".").trim());
+const parsePrice = (value: string) => {
+    const trimmed = value.trim();
+    const hasComma = trimmed.includes(',');
+    const hasDot = trimmed.includes('.');
+
+    let normalized: string;
+    if (hasComma && hasDot) {
+        // Both comma and dot: remove all commas (they are grouping separators)
+        // e.g., "1,234.56" → "1234.56"
+        normalized = trimmed.replace(/,/g, '');
+    } else if (hasComma && !hasDot) {
+        // Only comma (no dot): replace comma with dot (decimal separator)
+        // e.g., "1,5" → "1.5"
+        normalized = trimmed.replace(',', '.');
+    } else {
+        // Only dot or neither: leave as-is
+        normalized = trimmed;
+    }
+
+    return Number(normalized);
+};
 
 const validateName = (value: string) => (value.trim() ? null : "Add a subscription name.");
 

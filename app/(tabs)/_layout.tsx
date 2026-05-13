@@ -4,6 +4,7 @@ import {Image, View} from "react-native";
 import {clsx} from "clsx";
 import {useSafeAreaInsets} from "react-native-safe-area-context";
 import {colors, components} from "@/constants/theme";
+import {SubscriptionsProvider} from "@/contexts/SubscriptionsContext";
 
 const tabBar = components.tabBar;
 const TabLayout = () => {
@@ -18,7 +19,8 @@ const TabLayout = () => {
         )
     }
 
-    return (<Tabs screenOptions={{
+    return (<SubscriptionsProvider>
+        <Tabs screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: {
@@ -47,7 +49,8 @@ const TabLayout = () => {
                                  <TabIcon focused={focused} icon={tab.icon}/>
                              )
                          }}/>)}
-    </Tabs>)
+    </Tabs>
+    </SubscriptionsProvider>)
 }
 
 export default TabLayout;
