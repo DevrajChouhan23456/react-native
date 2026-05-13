@@ -510,14 +510,11 @@
     }
 
     .dark-screen-header-title {
-        @apply absolute left-0 right-0 text-center text-[18px] font-sans-extrabold;
-        color: #0d1a46;
+        @apply absolute left-0 right-0 text-center text-[18px] font-sans-extrabold text-primary;
     }
 
     .dark-screen-header-button {
-        @apply size-12 items-center justify-center rounded-full border;
-        border-color: #efe3ae;
-        background-color: rgba(255, 255, 255, 0.01);
+        @apply size-12 items-center justify-center rounded-full border border-border bg-card;
     }
 
     .dark-screen-header-icon {
@@ -525,8 +522,7 @@
     }
 
     .insight-screen {
-        @apply flex-1;
-        background-color: #04070f;
+        @apply flex-1 bg-background;
     }
 
     .insight-section-row {
@@ -534,23 +530,19 @@
     }
 
     .insight-section-title {
-        @apply text-4xl font-sans-extrabold;
-        color: #0d1a46;
+        @apply text-4xl font-sans-extrabold text-primary;
     }
 
     .insight-section-action {
-        @apply rounded-full border px-5 py-2.5;
-        border-color: #efe3ae;
+        @apply rounded-full border border-border px-5 py-2.5;
     }
 
     .insight-section-action-text {
-        @apply text-xl font-sans-bold;
-        color: #0d1a46;
+        @apply text-xl font-sans-bold text-primary;
     }
 
     .insight-chart-card {
-        @apply rounded-[24px] px-4 py-6;
-        background-color: #f7ebc2;
+        @apply rounded-[24px] bg-card px-4 py-6 mb-5;
     }
 
     .insight-chart-inner {
@@ -563,8 +555,7 @@
     }
 
     .insight-chart-axis-label {
-        @apply text-base font-sans-medium;
-        color: #536482;
+        @apply text-base font-sans-medium text-muted-foreground;
     }
 
     .insight-chart-plot {
@@ -578,7 +569,7 @@
 
     .insight-chart-grid-line {
         border-top-width: 1px;
-        border-top-color: #dfd29f;
+        border-top-color: #e5dcc0;
         border-top-style: dashed;
     }
 
@@ -596,48 +587,39 @@
     }
 
     .insight-chart-bubble {
-        @apply mb-3 rounded-2xl px-3 py-2;
-        background-color: #fff8e7;
+        @apply mb-3 rounded-2xl bg-muted px-3 py-2;
     }
 
     .insight-chart-bubble-text {
-        @apply text-lg font-sans-extrabold;
-        color: #f08a55;
+        @apply text-lg font-sans-extrabold text-accent;
     }
 
     .insight-chart-bar {
-        @apply w-3 rounded-full;
-        background-color: #081126;
+        @apply w-3 rounded-full bg-primary;
     }
 
     .insight-chart-bar-highlighted {
-        background-color: #f08a55;
+        @apply bg-accent;
     }
 
     .insight-chart-day {
-        @apply mt-4 text-lg font-sans-semibold;
-        color: #0d1a46;
+        @apply mt-4 text-lg font-sans-semibold text-primary;
     }
 
     .insight-expense-card {
-        @apply mt-4 flex-row items-end justify-between rounded-[24px] border px-4 py-4;
-        border-color: #efe3ae;
-        background-color: rgba(255, 255, 255, 0.01);
+        @apply mt-4 flex-row items-end justify-between rounded-[24px] border border-border bg-card px-4 py-4;
     }
 
     .insight-expense-title {
-        @apply text-[17px] font-sans-extrabold;
-        color: #0d1a46;
+        @apply text-[17px] font-sans-extrabold text-primary;
     }
 
     .insight-expense-month {
-        @apply mt-1 text-base font-sans-bold;
-        color: #516383;
+        @apply mt-1 text-base font-sans-bold text-muted-foreground;
     }
 
     .insight-expense-value {
-        @apply text-[18px] font-sans-extrabold;
-        color: #0d1a46;
+        @apply text-[18px] font-sans-extrabold text-primary;
     }
 
     .insight-expense-change {
@@ -662,13 +644,11 @@
     }
 
     .insight-history-name {
-        @apply text-[18px] font-sans-extrabold;
-        color: #081126;
+        @apply text-[18px] font-sans-extrabold text-primary;
     }
 
     .insight-history-date {
-        @apply text-base font-sans-medium;
-        color: #42567f;
+        @apply text-base font-sans-medium text-muted-foreground;
     }
 
     .insight-history-price-box {
@@ -676,13 +656,11 @@
     }
 
     .insight-history-price {
-        @apply text-[18px] font-sans-extrabold;
-        color: #081126;
+        @apply text-[18px] font-sans-extrabold text-primary;
     }
 
     .insight-history-billing {
-        @apply mt-1 text-base font-sans-medium;
-        color: #42567f;
+        @apply mt-1 text-base font-sans-medium text-muted-foreground;
     }
 
     .subscription-brand-badge {
@@ -710,14 +688,11 @@
     }
 
     .subscriptions-showcase-screen {
-        @apply flex-1;
-        background-color: #04070f;
+        @apply flex-1 bg-background;
     }
 
     .subscription-showcase-card {
-        @apply rounded-[24px] border px-4 py-5;
-        border-color: #efe3ae;
-        background-color: rgba(255, 255, 255, 0.01);
+        @apply rounded-[24px] border border-border bg-card px-4 py-5;
     }
 
     .subscription-showcase-card-expanded {
@@ -733,13 +708,11 @@
     }
 
     .subscription-showcase-title {
-        @apply text-[19px] font-sans-extrabold;
-        color: #0d1a46;
+        @apply text-[19px] font-sans-extrabold text-primary;
     }
 
     .subscription-showcase-subtitle {
-        @apply text-base font-sans-semibold;
-        color: #42567f;
+        @apply text-base font-sans-semibold text-muted-foreground;
     }
 
     .subscription-showcase-price-box {
@@ -747,13 +720,11 @@
     }
 
     .subscription-showcase-price {
-        @apply text-[18px] font-sans-extrabold;
-        color: #0d1a46;
+        @apply text-[18px] font-sans-extrabold text-primary;
     }
 
     .subscription-showcase-term {
-        @apply mt-1 text-base font-sans-medium;
-        color: #42567f;
+        @apply mt-1 text-base font-sans-medium text-muted-foreground;
     }
 
     .subscription-showcase-body {
@@ -769,23 +740,19 @@
     }
 
     .subscription-showcase-label {
-        @apply text-[13px] font-sans-bold;
-        color: #42567f;
+        @apply text-[13px] font-sans-bold text-muted-foreground;
     }
 
     .subscription-showcase-value {
-        @apply text-[16px] font-sans-extrabold;
-        color: #081126;
+        @apply text-[16px] font-sans-extrabold text-primary;
     }
 
     .subscription-showcase-small-button {
-        @apply rounded-full border px-4 py-2;
-        border-color: #081126;
+        @apply rounded-full border border-primary px-4 py-2;
     }
 
     .subscription-showcase-small-button-text {
-        @apply text-[15px] font-sans-extrabold;
-        color: #081126;
+        @apply text-[15px] font-sans-extrabold text-primary;
     }
 
     .subscription-showcase-cancel {
@@ -794,5 +761,23 @@
 
     .subscription-showcase-cancel-text {
         @apply text-base font-sans-extrabold text-background;
+    }
+
+    .subscriptions-search-field {
+        @apply min-h-14 rounded-2xl border border-border bg-card px-4 py-4 text-base font-sans-semibold;
+        color: #0d1a46;
+    }
+
+    .subscriptions-search-wrapper {
+        @apply gap-2;
+    }
+
+    .subscriptions-header-section {
+        @apply gap-4;
+    }
+
+    .subscriptions-list-content {
+        padding-horizontal: 20px;
+        padding-top: 8px;
     }
 }

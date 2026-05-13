@@ -39,3 +39,32 @@ export const icons = {
 } as const;
 
 export type IconKey = keyof typeof icons;
+
+// Mapping of subscription names/keywords to their icon keys
+export const SUBSCRIPTION_ICON_MAP: Record<string, IconKey> = {
+    spotify: "spotify",
+    notion: "notion",
+    figma: "figma",
+    dropbox: "dropbox",
+    github: "github",
+    "github copilot": "github",
+    adobe: "adobe",
+    claude: "claude",
+    canva: "canva",
+    openai: "openai",
+    "openai team": "openai",
+    grammarly: "medium",
+    medium: "medium",
+};
+
+// Mapping of subscription categories to fallback icon keys
+export const CATEGORY_ICON_MAP: Record<string, IconKey> = {
+    "Entertainment": "activity",
+    "AI Tools": "claude",
+    "Developer Tools": "github",
+    "Design": "figma",
+    "Productivity": "medium",
+    "Cloud": "dropbox",
+    "Music": "spotify",
+    "Other": "wallet",
+};

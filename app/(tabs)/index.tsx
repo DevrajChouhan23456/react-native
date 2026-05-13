@@ -4,11 +4,7 @@ import {SafeAreaView as RNSafeAreaView} from "react-native-safe-area-context";
 import {styled} from "nativewind";
 import {useMemo, useState} from "react";
 import images from "@/constants/images";
-<<<<<<< HEAD
-import {HOME_BALANCE, HOME_USER, UPCOMING_SUBSCRIPTIONS} from "@/constants/data";
-=======
 import {HOME_BALANCE, HOME_USER} from "@/constants/data";
->>>>>>> ace7d33 (impliment fixes insigt and refine the subscription screen)
 import {icons} from "@/constants/icons";
 import {formatCurrency} from "@/lib/utils";
 import dayjs from "dayjs";
@@ -16,12 +12,8 @@ import ListHeading from "@/components/ListHeading";
 import UpComingSubscriptionCard from "@/components/UpComingSubscriptionCard";
 import SubscriptionCard from "@/components/SubscriptionCard";
 import CreateSubscriptionModal from "@/components/CreateSubscriptionModal";
-<<<<<<< HEAD
-import {useSubscriptions} from "@/contexts/SubscriptionsContext";
-=======
 import { buildUpcomingSubscriptions, getNextRenewalDate } from "@/lib/subscription-insights";
 import { useSubscriptionStore } from "@/lib/subscription-store";
->>>>>>> ace7d33 (impliment fixes insigt and refine the subscription screen)
 
 
 const SafeAreaView = styled(RNSafeAreaView);
@@ -29,10 +21,6 @@ const SafeAreaView = styled(RNSafeAreaView);
 export default function App() {
     const { subscriptions, addSubscription } = useSubscriptionStore();
     const [expandedSubscriptionId, setExpandedSubscriptionId] = useState<string | null>(null);
-<<<<<<< HEAD
-    const {subscriptions, addSubscription} = useSubscriptions();
-=======
->>>>>>> ace7d33 (impliment fixes insigt and refine the subscription screen)
     const [isCreateSubscriptionModalVisible, setIsCreateSubscriptionModalVisible] = useState(false);
     const upcomingSubscriptions = useMemo(
         () => buildUpcomingSubscriptions(subscriptions),

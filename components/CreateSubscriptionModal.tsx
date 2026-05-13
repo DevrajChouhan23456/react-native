@@ -22,6 +22,9 @@ import {
     type SubscriptionFrequencyOption,
 } from "@/constants/data";
 import { icons } from "@/constants/icons";
+import { getSubscriptionIcon } from "@/lib/utils";
+import { posthog } from "@/src/config";
+
 
 const StyledTextInput = styled(TextInput);
 
@@ -160,7 +163,7 @@ const CreateSubscriptionModal = ({
             status: "active",
             startDate: startDate.toISOString(),
             renewalDate: renewalDate.toISOString(),
-            icon: icons.wallet,
+            icon: getSubscriptionIcon(name, category),
             billing: frequency,
             color: SUBSCRIPTION_CATEGORY_COLORS[category],
             currency: "USD",
@@ -168,6 +171,14 @@ const CreateSubscriptionModal = ({
             plan: category,
         });
 
+      posthog.capture("subscription_created", {
+            name: name.trim(),
+            price: parsedPrice,
+            frequency,
+            category,
+        });
+
+        resetForm();
         closeModal();
     };
 

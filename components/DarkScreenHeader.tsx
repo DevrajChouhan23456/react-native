@@ -8,7 +8,7 @@ interface DarkScreenHeaderProps {
     onActionPress?: () => void;
 }
 
-const iconTint = "#efe3ae";
+const iconTint = "#081126";
 
 const DarkScreenHeader = ({
     title,
